@@ -9,6 +9,7 @@ Denne guiden beskriver hvordan du installerer Raspberry Pi OS (tidligere kjent s
 ---
 
 ### Steg 1: Hva du trenger
+
 - Ha en Raspberry Pi
 
 ---
@@ -19,6 +20,7 @@ Gå til den offisielle nettsiden for å laste ned operativsystemet:
 [Raspberry Pi OS Nedlastinger](https://www.raspberrypi.org/software/operating-systems/)
 
 Du har flere alternativer:
+
 - **Raspberry Pi OS with desktop**: Full versjon med skrivebordsmiljø (anbefalt).
 - **Raspberry Pi OS Lite**: For bruk uten skrivebordsmiljø (hodetelefon-modus).
 - **Raspberry Pi OS with desktop and recommended software**: Inkluderer ekstra programvare for læring og programmering.
@@ -107,17 +109,17 @@ sudo apt upgrade # Installerer oppdateringer
 
 1. Installer UFW (Uncomplicated Firewall):
 
-    ```bash
-    sudo apt install ufw
-    sudo ufw enable  # Starter firewall ved startup
-    sudo ufw allow ssh  # Tillater SSH gjennom firewall
-    ```
+   ```bash
+   sudo apt install ufw
+   sudo ufw enable  # Starter firewall ved startup
+   sudo ufw allow ssh  # Tillater SSH gjennom firewall
+   ```
 
 2. Sjekk statusen til firewallen:
 
-    ```bash
-    sudo ufw status
-    ```
+   ```bash
+   sudo ufw status
+   ```
 
 ---
 
@@ -160,27 +162,27 @@ sudo mysql_secure_installation  # Sikrer MariaDB
 
 1. Logg inn i MariaDB:
 
-    ```bash
-    sudo mariadb -u root
-    ```
+   ```bash
+   sudo mariadb -u root
+   ```
 
 2. Lag en ny bruker:
 
-    ```sql
-    CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
-    ```
+   ```sql
+   CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+   ```
 
 3. Gi brukeren rettigheter:
 
-    ```sql
-    GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' IDENTIFIED BY 'password';
-    ```
+   ```sql
+   GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' IDENTIFIED BY 'password';
+   ```
 
 4. Oppdater rettigheter:
 
-    ```sql
-    FLUSH PRIVILEGES;
-    ```
+   ```sql
+   FLUSH PRIVILEGES;
+   ```
 
 ---
 
@@ -202,4 +204,4 @@ Sørg for at systemet er oppdatert:
 
 ```bash
 sudo apt update
-``` 
+```
