@@ -55,7 +55,7 @@ b. Hvis du har kablet nettverk, vil IP vises ved eth0: linje.
 
  8. Installer annen programvare du ønsker. For eksempel VS Code, en annen nettleser,wireshark, nmap, etc
  
- a.  Hvis du får trøbbel med VS Code, last ned .deb for arm64 frahttps://code.visualstudio.com/docs/setup/linux Naviger til mappen du lastetned filen
+ a.  Hvis du får trøbbel med VS Code, last ned .deb for arm64 fra https://code.visualstudio.com/docs/setup/linux Naviger til mappen du lastetned filen
   
         b.  Skriv sudo apt install ./code og trykk tab, så enter 
 
