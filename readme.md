@@ -1,17 +1,21 @@
-# brukervegledning
+# Brukerveiledning
 
-installere os på rpi
+## Installere OS på Raspberry Pi
 
-# Guide: Installere et OS på Raspberry Pi
+### Guide: Installere et OS på Raspberry Pi
 
 Denne guiden beskriver hvordan du installerer Raspberry Pi OS (tidligere kjent som Raspbian) på en Raspberry Pi.
 
-## Steg 1: Hva du trenger
-- Ha en razberry pi
+---
 
-## Steg 2: Last ned Raspberry Pi OS
+### Steg 1: Hva du trenger
+- Ha en Raspberry Pi
 
-Gå til den offisielle nettsiden for å laste ned operativsystemet:
+---
+
+### Steg 2: Last ned Raspberry Pi OS
+
+Gå til den offisielle nettsiden for å laste ned operativsystemet:  
 [Raspberry Pi OS Nedlastinger](https://www.raspberrypi.org/software/operating-systems/)
 
 Du har flere alternativer:
@@ -21,15 +25,19 @@ Du har flere alternativer:
 
 Velg den versjonen som passer deg best.
 
-## Steg 3: Last ned Raspberry Pi Imager
+---
 
-For å installere operativsystemet på SD-kortet, må du bruke et verktøy som heter Raspberry Pi Imager:
+### Steg 3: Last ned Raspberry Pi Imager
+
+For å installere operativsystemet på SD-kortet, må du bruke et verktøy som heter Raspberry Pi Imager:  
 [Raspberry Pi Imager](https://www.raspberrypi.org/software/)
 
 1. Gå til nettsiden og last ned verktøyet for ditt operativsystem (Windows, macOS, eller Linux).
 2. Følg instruksjonene for å installere programvaren.
 
-## Steg 4: Klargjør microSD-kortet
+---
+
+### Steg 4: Klargjør microSD-kortet
 
 1. Sett microSD-kortet inn i datamaskinens SD-kortleser (bruk en adapter om nødvendig).
 2. Åpne Raspberry Pi Imager.
@@ -39,7 +47,9 @@ For å installere operativsystemet på SD-kortet, må du bruke et verktøy som h
 
 > **Merk:** Denne prosessen vil formatere SD-kortet og slette alle data som allerede er der.
 
-## Steg 5: Start opp Raspberry Pi
+---
+
+### Steg 5: Start opp Raspberry Pi
 
 Når prosessen er ferdig:
 
@@ -47,7 +57,9 @@ Når prosessen er ferdig:
 2. Koble til tastatur, mus og skjerm til Raspberry Pi.
 3. Koble til strømforsyningen. Raspberry Pi vil starte automatisk.
 
-## Steg 6: Første gangs oppsett
+---
+
+### Steg 6: Første gangs oppsett
 
 Når Raspberry Pi starter for første gang:
 
@@ -56,87 +68,138 @@ Når Raspberry Pi starter for første gang:
 3. Hvis det er tilgjengelige oppdateringer, vil Raspberry Pi OS be deg om å installere disse.
 4. Velg et nytt passord for brukerkontoen `pi`.
 
-## Steg 7: Valgfritt - Aktiver SSH og sett opp statisk IP
+---
+
+### Steg 7: Valgfritt - Aktiver SSH og sett opp statisk IP
 
 1. Gå til `Preferences` > `Raspberry Pi Configuration`.
 2. Under `Interfaces`, slå på SSH for å få fjernstyring over nettverk.
 3. Under `Network`, kan du konfigurere en statisk IP-adresse (dette kan også gjøres via router).
 
-## Steg 8: Ferdig
+---
+
+### Steg 8: Ferdig
 
 Nå er Raspberry Pi ferdig installert med operativsystemet og klar til bruk. Du kan begynne å utforske mulighetene, fra programmering til å sette opp Raspberry Pi som en server.
 
+---
 
+## Installering av programmer
 
+### Steg 1: Åpne terminal
 
+På din Raspberry Pi, åpne terminal.
 
-installering av programmer etc
-1. Åpne terminal på din rasberry pi
+---
 
-2. finn og installer oppdateringer til allprogramvare som er installert
+### Steg 2: Installer oppdateringer
 
-        a. sudo apt update (finner oppdatering)
+Sørg for at all programvare er oppdatert:
 
-        b. sudo apt upgrame (installerer oppdateringen)
+```bash
+sudo apt update  # Finner oppdateringer
+sudo apt upgrade # Installerer oppdateringer
+```
 
-3. sett opp firewall
+---
 
-        a. sudo apt install ufw (installerer UFW)
+### Steg 3: Sett opp firewall
 
-        b. sudo ufw enable (starter firewall ved startup)
+1. Installer UFW (Uncomplicated Firewall):
 
-        c. sudo ufw allow ssh (slipper ssh gjennom firewall)
+    ```bash
+    sudo apt install ufw
+    sudo ufw enable  # Starter firewall ved startup
+    sudo ufw allow ssh  # Tillater SSH gjennom firewall
+    ```
 
-        d. sjekk firewall status ved å skrive sudo ufw status
+2. Sjekk statusen til firewallen:
 
-4. 
-- aktiver ssh
+    ```bash
+    sudo ufw status
+    ```
 
-        a. sudo apt install openssh-server (installerer ssh server)
+---
 
-        b. sudo systemctl enable ssh (skrur på ssh ved startup)
+### Steg 4: Aktiver SSH
 
-5. 
-- finn ip
+For å aktivere SSH:
 
-        a. skriv ip-a i terminalen
+```bash
+sudo apt install openssh-server  # Installerer SSH-server
+sudo systemctl enable ssh        # Skrur på SSH ved oppstart
+```
 
-b:
+---
 
-- Hvis du har kablet nettverk, vil IP vises ved eth0: linje.
+### Steg 5: Finn IP-adresse
 
- - Hvis du kun har trådløst, vil ipvises ved wlan0: linje.
- 
- - IP-adresse er vanligvis 10.2.3.x eller noe lignende (hvor x er etnummer mellom 2 og 254)
+Skriv følgende kommando for å finne IP-adressen din:
 
- 6. installer git, python og mariadb
+```bash
+ip a
+```
 
-         a. sudo install python3-pip
+- Hvis du har kablet nettverk, vises IP-adressen ved **eth0**-linjen.
+- Hvis du bruker trådløst nettverk, vises IP-adressen ved **wlan0**-linjen.
 
-         b. sudo apt install git
+> **Merk:** IP-adresser vil vanligvis være på formen `10.2.3.x` eller lignende, hvor `x` er et nummer mellom 2 og 254.
 
-        c. sudo apt install mariadb-server
+---
 
-        d. sudo mysql_secure_installation
+### Steg 6: Installer Git, Python og MariaDB
 
- 7.
- - lag ny database-bruker og sett riktige rettigheter
+```bash
+sudo apt install python3-pip git mariadb-server
+sudo mysql_secure_installation  # Sikrer MariaDB
+```
 
-        a. Logg inn i mariadb med koden: sudo mariadb-u root
+---
 
-        b. lag ny bruker med koden: CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+### Steg 7: Lag ny database-bruker og sett riktige rettigheter
 
-        c. gi bruker rettigheter med koden: GRANT ALL PRIVILEGES ON *.* TO 'username'@’localhost’IDENTIFIED BY 'password';
+1. Logg inn i MariaDB:
 
-        d: oppdater rettigheter med koden: flush privileges;
+    ```bash
+    sudo mariadb -u root
+    ```
 
- 8. 
- - Installer annen programvare du ønsker. For eksempel VS Code, en annen nettleser,wireshark, nmap, etc
- 
- a. 
- - Hvis du får trøbbel med VS Code, last ned .deb for arm64 fra https://code.visualstudio.com/docs/setup/linux Naviger til mappen du lastetned filen
-  
-        b.  Skriv sudo apt install ./code og trykk tab, så enter 
+2. Lag en ny bruker:
 
-         9. skriv koden: sudo apt update  
+    ```sql
+    CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+    ```
 
+3. Gi brukeren rettigheter:
+
+    ```sql
+    GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' IDENTIFIED BY 'password';
+    ```
+
+4. Oppdater rettigheter:
+
+    ```sql
+    FLUSH PRIVILEGES;
+    ```
+
+---
+
+### Steg 8: Installer annen programvare
+
+Installer annen programvare du trenger, for eksempel:
+
+- **VS Code**: Last ned `.deb` for ARM64 fra [VS Code Linux Setup](https://code.visualstudio.com/docs/setup/linux).
+
+Naviger til mappen der du lastet ned filen, og installer:
+
+```bash
+sudo apt install ./code*.deb
+```
+
+### Steg 9: Sjekk for oppdateringer
+
+Sørg for at systemet er oppdatert:
+
+```bash
+sudo apt update
+``` 
